@@ -1,0 +1,25 @@
+{
+  "name": "intro-web-security",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "prismjs": "^1.8.3",
+    "raw-loader": "^0.5.1",
+    "react": "15",
+    "react-dom": "15",
+    "spectacle-code-slide": "^0.5.1",
+    "spectacle-scripts": "1.0.15",
+    "spectacle-terminal": "^0.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "export": "node scripts/export-pdf.js"
+  },
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "puppeteer": "^0.12.0"
+  }
+}
