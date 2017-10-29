@@ -2,6 +2,7 @@
 
 // Import React
 import React from 'react';
+import styled from 'styled-components';
 
 // Import Spectacle Core tags
 import {
@@ -39,6 +40,7 @@ import 'prismjs/components/prism-core';
 import 'prismjs/components/prism-clike';
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-http';
 
 const theme = createTheme();
 
@@ -76,7 +78,9 @@ const images = {
   meNeutral: require('./assets/me-neutral.png'),
   meMasterChief: require('./assets/me-master-chief.png'),
   twilio: require('./assets/Twilio_logo_white.png'),
-  onesieJs: require('./assets/onesiejs.jpg')
+  onesieJs: require('./assets/onesiejs.jpg'),
+  bobbyTables: require('./assets/bobby-tables.png'),
+  samyWorm: require('./assets/samy-worm.png')
 };
 
 export default class Presentation extends React.Component {
@@ -250,16 +254,28 @@ export default class Presentation extends React.Component {
             <Heading size={2}> Little Bobby Tables Young Brother </Heading>
             <Heading> Samy '"src="javascript:alert(1);// XSS</Heading>
           </Slide>
-          <Slide> INSERT COMIC OF LITTLE BOBBY TABLES </Slide>
-          <Slide> Insert screenshot of Samy Myspace Source Code </Slide>
           <Slide>
-            <Heading> Tricks used by Samy </Heading>
-            Insert code snippets from Samy here : actual source code in a
-            different property, combined strings to use blocked keywords
+            <Image src={images.bobbyTables} />
+            <Link href="https://xkcd.com/327/">
+              <Text>https://xkcd.com/327/</Text>
+            </Link>
+          </Slide>
+          <Slide><Image src={images.samyWorm} width="100%" /></Slide>
+          <Slide>
+            <Heading>Tricks used by Samy</Heading>
+            <CodePane
+              lang="html"
+              source={require('!!raw-loader!./snippets/samy-move-code.html')}
+            />
+            <CodePane
+              lang="javascript"
+              source={require('!!raw-loader!./snippets/samy-join-strings.js')}
+            />
+            <Link href="http://samy.pl/popular/tech.html"><Text>samy.pl/popular/tech.html</Text></Link>
           </Slide>
           <Slide>
             <Heading> Obstrusive JavaScript </Heading>
-            Insert JSFuck example here{' '}
+            <CodePane lang="javascript" source={require('!!raw-loader!./snippets/obstrusive-javascript.js')} />
           </Slide>
           <Slide>
             <Heading> Blocking XSS Is Not Trivial </Heading>
@@ -272,11 +288,11 @@ export default class Presentation extends React.Component {
             </Link>
           </Slide>
           <Slide>
-            <Heading> Encoding can be dangerous! </Heading>
+            <Heading>Encoding can be dangerous!</Heading>
           </Slide>
           <Slide>
             <Heading> CSS can be dangerous! </Heading>
-            Add link to React / StyledComponents example
+            <Link href="https://codesandbox.io/s/llnzkwk0mz"><Text>codesandbox.io/s/llnzkwk0mz</Text></Link>
           </Slide>
           <Slide>
             <Heading> JSON with Padding(JSONP) </Heading>
@@ -308,7 +324,7 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading> CSP Example Header </Heading>
             <CodePane
-              lang="text"
+              lang="http"
               source={require('!!raw-loader!./snippets/csp-header.snippet')}
             />
           </Slide>
