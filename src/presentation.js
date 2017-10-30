@@ -72,20 +72,22 @@ const Mono = ({ children }) => {
   const style = {
     fontFamily: theme.screen.fonts.code,
     textTransform: 'none'
-  }
+  };
 
-  return <code style={style}>{children}</code>
-}
+  return <code style={style}>{children}</code>;
+};
 
-const LinkedImage = (props) => {
+const LinkedImage = props => {
   let { src, href, target, style, width, height, rel } = props;
   target = target || '_blank';
   rel = rel === undefined ? 'noopener noreferrer' : rel;
-  const linkStyles = { border: 'none', ...style};
-  return (<a href={href} target={target} style={linkStyles} rel={rel} {...props}>
-    <Image src={src} width={width} height={height}/>
-  </a>);
-}
+  const linkStyles = { border: 'none', ...style };
+  return (
+    <a href={href} target={target} style={linkStyles} rel={rel} {...props}>
+      <Image src={src} width={width} height={height} />
+    </a>
+  );
+};
 
 const gutter = '25px';
 const inline = {
@@ -116,7 +118,9 @@ const images = {
   }
 };
 
-const codeInspect = <Image src={images.icons.magnifyingGlass} height="0.8em" margin="0px"/>;
+const codeInspect = (
+  <Image src={images.icons.magnifyingGlass} height="0.8em" margin="0px" />
+);
 
 export default class Presentation extends React.Component {
   render() {
@@ -131,11 +135,22 @@ export default class Presentation extends React.Component {
           <Slide bgImage={images.hackerWallpaper} bgDarken={0.5}>
             <Heading size={3}> Introduction to </Heading>
             <Heading> Web Security </Heading>
-            <Image src={images.icons.webSecurity} height={200}/>
+            <Image src={images.icons.webSecurity} height={200} />
           </Slide>
           <Slide> Intro Slides </Slide>
-          <Slide bgImage={images.onesieJs} bgSize='contain' bgRepeat='no-repeat'>
-            <Heading bgColor="darkBlue" caps={false} style={{display: 'inline-block'}} padding={20}>#onesiejs</Heading>
+          <Slide
+            bgImage={images.onesieJs}
+            bgSize="contain"
+            bgRepeat="no-repeat"
+          >
+            <Heading
+              bgColor="darkBlue"
+              caps={false}
+              style={{ display: 'inline-block' }}
+              padding={20}
+            >
+              #onesiejs
+            </Heading>
             <Notes>
               I'm a member of a group of onesie loving JavaSCript developers
             </Notes>
@@ -147,7 +162,7 @@ export default class Presentation extends React.Component {
             </Notes>
           </Slide>
           <Slide bgImage={images.socialMediaWallpaper} bgDarken={0.5}>
-          <Image src={images.onesieScreenshot} width="100%" />
+            <Image src={images.onesieScreenshot} width="100%" />
             <Notes>
               So I did what every developer would do and built one myself.
               Introducing onesie.life
@@ -172,7 +187,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>
-              No real database<br/>===<br/>No real database injections
+              No real database<br />===<br />No real database injections
             </Heading>
             <Image src={images.thinkingGif} />
           </Slide>
@@ -192,7 +207,13 @@ export default class Presentation extends React.Component {
             </Notes>
           </Slide>
           <Slide>
-            <LinkedImage src={images.onesieScreenshot} width="100%" href="https://onesie.life" rel="noopener noreferrer" target="_blank"/>
+            <LinkedImage
+              src={images.onesieScreenshot}
+              width="100%"
+              href="https://onesie.life"
+              rel="noopener noreferrer"
+              target="_blank"
+            />
             <Link
               href="https://onesie.life"
               rel="noopener noreferrer"
@@ -203,9 +224,8 @@ export default class Presentation extends React.Component {
             <Notes> Alright so let 's take a look at onesie.life</Notes>
           </Slide>
           <Slide>
-            
             <Heading size={2}>
-            {codeInspect} Use <Mono>HttpOnly</Mono> Cookies
+              {codeInspect} Use <Mono>HttpOnly</Mono> Cookies
             </Heading>
             <CodePane
               lang="javascript"
@@ -218,7 +238,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>
-            {codeInspect} Use Safe <Mono>JWT</Mono> Implementations
+              {codeInspect} Use Safe <Mono>JWT</Mono> Implementations
             </Heading>
             <CodePane
               lang="javascript"
@@ -233,28 +253,32 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={2}>Let's post something!</Heading>
             <div>
-              <LinkedImage src={images.icons.desktopCode} href="https://onesie.life/home" height="300px"/>
+              <LinkedImage
+                src={images.icons.desktopCode}
+                href="https://onesie.life/home"
+                height="300px"
+              />
             </div>
             <Link
               href="https://onesie.life"
               rel="noopener noreferrer"
               target="_blank"
-            ><Text>
-              onesie.life Feed
-              </Text>
+            >
+              <Text>onesie.life Feed</Text>
             </Link>
           </Slide>
           <Slide>
             <Heading size={2}>Cross Site Request Forgery</Heading>
             <div>
-            <LinkedImage src={images.icons.hacker} href="https://hack-onesie.glitch.me" height="300px" rel=""/>
+              <LinkedImage
+                src={images.icons.hacker}
+                href="https://hack-onesie.glitch.me"
+                height="300px"
+                rel=""
+              />
             </div>
-            <Link
-              href="https://hack-onesie.glitch.me"
-              target="_blank"
-            ><Text>
-              hack-onesie.glitch.me
-              </Text>
+            <Link href="https://hack-onesie.glitch.me" target="_blank">
+              <Text>hack-onesie.glitch.me</Text>
             </Link>
           </Slide>
           <Slide>
@@ -262,14 +286,18 @@ export default class Presentation extends React.Component {
             <Image src={images.waitWhatGif} />
           </Slide>
           <Slide>
-            <Heading size={2}><Mono>window.opener</Mono></Heading>
+            <Heading size={2}>
+              <Mono>window.opener</Mono>
+            </Heading>
             <CodePane
               lang="javascript"
               source={require('!!raw-loader!./snippets/opener-redirect.js')}
             />
           </Slide>
           <Slide>
-            <Heading size={2}>{codeInspect} Use <Mono>"noopener"</Mono></Heading>
+            <Heading size={2}>
+              {codeInspect} Use <Mono>"noopener"</Mono>
+            </Heading>
             <CodePane
               lang="html"
               source={require('!!raw-loader!./snippets/noopener.html')}
@@ -305,7 +333,12 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={2}>X-Frame-Options Demo</Heading>
             <div>
-            <LinkedImage src={images.icons.hacker} href="https://hack-onesie.glitch.me/frame" height="300px" rel=""/>
+              <LinkedImage
+                src={images.icons.hacker}
+                href="https://hack-onesie.glitch.me/frame"
+                height="300px"
+                rel=""
+              />
             </div>
             <Link
               href="https://hack-onesie.glitch.me/frame"
@@ -317,15 +350,21 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={3}> Little Bobby Tables Young Brother </Heading>
-            <Heading fit><Mono>Samy '"src="javascript:alert(1);// XSS</Mono></Heading>
+            <Heading fit>
+              <Mono>Samy '"src="javascript:alert(1);// XSS</Mono>
+            </Heading>
           </Slide>
           <Slide>
-            <Image src={images.bobbyTables} width="100%"/>
+            <Image src={images.bobbyTables} width="100%" />
             <Link href="https://xkcd.com/327/">
               <Text>https://xkcd.com/327/</Text>
             </Link>
           </Slide>
-          <Slide bgImage={images.samyWorm} bgSize="contain" bgRepeat="no-repeat"></Slide>
+          <Slide
+            bgImage={images.samyWorm}
+            bgSize="contain"
+            bgRepeat="no-repeat"
+          />
           <Slide>
             <Heading size={2}>Tricks used by Samy</Heading>
             <CodePane
@@ -336,16 +375,25 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/samy-join-strings.js')}
             />
-            <Link href="http://samy.pl/popular/tech.html"><Text>samy.pl/popular/tech.html</Text></Link>
+            <Link href="http://samy.pl/popular/tech.html">
+              <Text>samy.pl/popular/tech.html</Text>
+            </Link>
           </Slide>
           <Slide>
             <Heading size={2}>Obstrusive JavaScript</Heading>
-            <CodePane lang="javascript" source={require('!!raw-loader!./snippets/obstrusive-javascript.js')} />
+            <CodePane
+              lang="javascript"
+              source={require('!!raw-loader!./snippets/obstrusive-javascript.js')}
+            />
           </Slide>
           <Slide>
             <Heading size={2}>Blocking XSS Is Not Trivial</Heading>
             <div>
-              <LinkedImage src={images.icons.desktopCode} href="https://onesie.life/home" height="300px"/>
+              <LinkedImage
+                src={images.icons.desktopCode}
+                href="https://onesie.life/home"
+                height="300px"
+              />
             </div>
             <Link
               href="https://onesie.life"
@@ -356,14 +404,23 @@ export default class Presentation extends React.Component {
             </Link>
           </Slide>
           <Slide>
-            <Heading>Encoding can be <em style={{textTransform: 'none'}}>dangerous</em>!</Heading>
+            <Heading>
+              Encoding can be{' '}
+              <em style={{ textTransform: 'none' }}>dangerous</em>!
+            </Heading>
           </Slide>
           <Slide>
             <Heading size={2}>CSS can be dangerous!</Heading>
             <div>
-              <LinkedImage src={images.icons.desktopCode} href="https://codesandbox.io/s/llnzkwk0mz" height="300px"/>
+              <LinkedImage
+                src={images.icons.desktopCode}
+                href="https://codesandbox.io/s/llnzkwk0mz"
+                height="300px"
+              />
             </div>
-            <Link href="https://codesandbox.io/s/llnzkwk0mz"><Text>codesandbox.io/s/llnzkwk0mz</Text></Link>
+            <Link href="https://codesandbox.io/s/llnzkwk0mz">
+              <Text>codesandbox.io/s/llnzkwk0mz</Text>
+            </Link>
           </Slide>
           <Slide>
             <Heading>JSONP</Heading>
@@ -372,7 +429,11 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={2}>XSS + poor JSONP = 💖</Heading>
             <div>
-              <LinkedImage src={images.icons.desktopCode} href="https://onesie.life" height="300px"/>
+              <LinkedImage
+                src={images.icons.desktopCode}
+                href="https://onesie.life"
+                height="300px"
+              />
             </div>
             <Link
               href="https://onesie.life"
@@ -384,12 +445,18 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Image height="300px" src={images.icons.superhero} />
-            <Heading fit><Mono>Content-Security-Policy</Mono></Heading>
+            <Heading fit>
+              <Mono>Content-Security-Policy</Mono>
+            </Heading>
           </Slide>
           <Slide>
             <Heading size={2}>CSP Demo</Heading>
             <div>
-              <LinkedImage src={images.icons.desktopCode} href="https://onesie.life/secure/home" height="300px"/>
+              <LinkedImage
+                src={images.icons.desktopCode}
+                href="https://onesie.life/secure/home"
+                height="300px"
+              />
             </div>
             <Link
               href="https://onesie.life/secure/home"
@@ -407,7 +474,9 @@ export default class Presentation extends React.Component {
             />
           </Slide>
           <Slide>
-            <Heading size={2}>CSP is not your<br/>security strategy!</Heading>
+            <Heading size={2}>
+              CSP is not your<br />security strategy!
+            </Heading>
             <Image src={images.icons.safetyNet} height="300px" />
             <Heading size={3}>CSP is a Safety Net!</Heading>
           </Slide>
