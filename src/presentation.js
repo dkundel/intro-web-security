@@ -41,6 +41,11 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-http';
 
+
+const HASHTAGS = '#angularconnect';
+const SLIDE_URL = 'bit.ly/sec-angularconnect';
+
+
 const theme = createTheme();
 
 const Footer = ({ name, twitter, hashtags }) => {
@@ -78,13 +83,15 @@ const Mono = ({ children }) => {
 };
 
 const LinkedImage = props => {
-  let { src, href, target, style, width, height, rel } = props;
+  let { src, href, target, style, width, height, rel, children, ...restProps } = props;
   target = target || '_blank';
   rel = rel === undefined ? 'noopener noreferrer' : rel;
   const linkStyles = { border: 'none', ...style };
   return (
-    <a href={href} target={target} style={linkStyles} rel={rel} {...props}>
+    <a href={href} target={target} style={linkStyles} rel={rel} {...restProps}>
       <Image src={src} width={width} height={height} />
+      {' '}
+      { children }
     </a>
   );
 };
@@ -114,7 +121,11 @@ const images = {
     webSecurity: require('./assets/icons/web_security_noun_696603_FFFFFF.svg'),
     hacker: require('./assets/icons/hacker.svg'),
     superhero: require('./assets/icons/superhero_1272983_FFFFFF.svg'),
-    safetyNet: require('./assets/icons/np_safety-net_14589_FFFFFF.svg')
+    safetyNet: require('./assets/icons/np_safety-net_14589_FFFFFF.svg'),
+    email: require('./assets/icons/np_email_1002247_FFFFFF.svg'),
+    github: require('./assets/icons/github-icon.svg'),
+    twitter: require('./assets/icons/twitter.svg'),
+    slideDownload: require('./assets/icons/np_download-presentation_719406_FFFFFF.svg')
   }
 };
 
@@ -129,7 +140,7 @@ export default class Presentation extends React.Component {
         <Footer
           name="Dominik Kundel"
           twitter="dkundel"
-          hashtags="#angularConnect"
+          hashtags={HASHTAGS}
         />
         <Deck theme={theme} progress="bar">
           <Slide bgImage={images.hackerWallpaper} bgDarken={0.5}>
@@ -137,7 +148,32 @@ export default class Presentation extends React.Component {
             <Heading> Web Security </Heading>
             <Image src={images.icons.webSecurity} height={200} />
           </Slide>
-          <Slide> Intro Slides </Slide>
+          <Slide>
+            <Layout>
+              <Fit style={{display: 'flex', alignItems: 'center'}}>
+                <Image src={images.meNeutral} />
+              </Fit>
+              <Fill style={{marginLeft: '5rem', textAlign: 'center'}}>
+                <Text textSize='4rem'><S type="italic">Hi!</S></Text>
+                <Text textSize='2rem'><S type="italic">I'm Dominik Kundel!</S></Text>
+                <Text style={{marginTop: '50px'}}>Developer Evangelist at</Text>
+                <Image src={images.twilio} height="100px" />
+                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '50px', textAlign: 'center'}}>
+                <LinkedImage src={images.icons.github} height="80px" href="https://github.com/dkundel"><Text textSize="1.3rem">github/dkundel</Text></LinkedImage>
+                <LinkedImage src={images.icons.twitter} height="80px" href="https://twitter.com/dkundel"><Text textSize="1.3rem">@dkundel</Text></LinkedImage>
+                <LinkedImage src={images.icons.email} height="80px" href="mailto:dkundel@twilio.com"><Text textSize="1.3rem">dkundel@twilio.com</Text></LinkedImage>
+                </div>
+              </Fill>
+            </Layout>
+          </Slide>
+          <Slide>
+            <Image src={images.twilio} height="5rem" style={{marginBottom: '3rem'}}/>
+            <Heading size={4} fit>Add messaging, voice, video and authentication in your apps with the language you already use</Heading>
+            <CodePane
+              lang="javascript"
+              source={require('!!raw-loader!./snippets/twilio.js')}
+            />
+          </Slide>
           <Slide
             bgImage={images.onesieJs}
             bgSize="contain"
@@ -152,7 +188,7 @@ export default class Presentation extends React.Component {
               #onesiejs
             </Heading>
             <Notes>
-              I'm a member of a group of onesie loving JavaSCript developers
+              I'm a member of a group of onesie loving JavaScript developers
             </Notes>
           </Slide>
           <Slide bgImage={images.socialMediaWallpaper}>
@@ -162,7 +198,7 @@ export default class Presentation extends React.Component {
             </Notes>
           </Slide>
           <Slide bgImage={images.socialMediaWallpaper} bgDarken={0.5}>
-            <Image src={images.onesieScreenshot} width="100%" />
+            <Image src={images.onesieScreenshot} width="70%" />
             <Notes>
               So I did what every developer would do and built one myself.
               Introducing onesie.life
@@ -187,7 +223,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>
-              No real database<br />===<br />No real database injections
+              No real database<br /><Mono>===</Mono><br />No real database injections
             </Heading>
             <Image src={images.thinkingGif} />
           </Slide>
@@ -207,13 +243,15 @@ export default class Presentation extends React.Component {
             </Notes>
           </Slide>
           <Slide>
+            <div>
             <LinkedImage
               src={images.onesieScreenshot}
-              width="100%"
+              width="80%"
               href="https://onesie.life"
               rel="noopener noreferrer"
               target="_blank"
             />
+            </div>
             <Link
               href="https://onesie.life"
               rel="noopener noreferrer"
@@ -308,6 +346,7 @@ export default class Presentation extends React.Component {
               Use <Mono>CSRF</Mono> Tokens
             </Heading>
             <CodePane
+              className="line-numbers"
               lang="javascript"
               source={require('!!raw-loader!./snippets/csrf-tokens.js')}
             />
@@ -467,7 +506,7 @@ export default class Presentation extends React.Component {
             </Link>
           </Slide>
           <Slide>
-            <Heading> CSP Example Header </Heading>
+            <Heading size={2}>CSP Example Header</Heading>
             <CodePane
               lang="http"
               source={require('!!raw-loader!./snippets/csp-header.snippet')}
@@ -503,6 +542,64 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Text>Summary</Text>
+          </Slide>
+          <Slide>
+          <div>
+              <LinkedImage
+                src={images.icons.slideDownload}
+                href={'https://'+SLIDE_URL}
+                height="300px"
+              />
+            </div>
+            <Link
+              href={'https://'+SLIDE_URL}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Text>{SLIDE_URL}</Text>
+            </Link>
+          </Slide>
+          <Slide>
+          <div>
+              <LinkedImage
+                src={images.icons.github}
+                href="https://github.com/dkundel/onesie-life"
+                height="300px"
+              />
+            </div>
+            <Link
+              href="https://github.com/dkundel/onesie-life"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Text>github.com/dkundel/onesie-life</Text>
+            </Link>
+          </Slide>
+          <Slide>
+            <Layout>
+              <Fit style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+                <Image src={images.meNeutral} />
+                <Text style={{marginTop: '50px'}}><S type="italic">Dominik Kundel</S></Text>
+              </Fit>
+              <Fill style={{marginLeft: '5rem', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                <Text textSize='4rem'><S type="italic">Thank You!</S></Text>
+                <Image src={images.twilio} height="180px" />
+                <div style={{marginTop: '50px'}}>
+                <Link
+              href={'https://'+SLIDE_URL}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <Text>{SLIDE_URL}</Text>
+            </Link>
+            </div>
+                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '50px', textAlign: 'center'}}>
+                <LinkedImage src={images.icons.github} height="80px" href="https://github.com/dkundel"><Text textSize="1.3rem">github/dkundel</Text></LinkedImage>
+                <LinkedImage src={images.icons.twitter} height="80px" href="https://twitter.com/dkundel"><Text textSize="1.3rem">@dkundel</Text></LinkedImage>
+                <LinkedImage src={images.icons.email} height="80px" href="mailto:dkundel@twilio.com"><Text textSize="1.3rem">dkundel@twilio.com</Text></LinkedImage>
+                </div>
+              </Fill>
+            </Layout>
           </Slide>
         </Deck>
       </div>
