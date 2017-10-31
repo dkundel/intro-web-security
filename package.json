@@ -10,7 +10,7 @@
     "spectacle-code-slide": "^0.5.1",
     "spectacle-scripts": "1.0.15",
     "spectacle-terminal": "^0.3.0",
-    "spectacle-theme-anker": "^1.0.0-alpha.0"
+    "spectacle-theme-anker": "^1.0.0-alpha.1"
   },
   "scripts": {
     "start": "react-scripts start",
