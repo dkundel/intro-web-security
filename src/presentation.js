@@ -106,7 +106,7 @@ const ResourceLinkWithIcon = ({ url, icon, text = '' }) => {
   text = text || url;
   return (
     <div>
-      <div>
+      <div style={{marginBottom: '1rem'}}>
         <LinkedImage src={icon} href={'https://' + url} height="300px" />
       </div>
       <Link href={'https://' + url} rel="noopener noreferrer" target="_blank">
@@ -136,6 +136,8 @@ const images = {
   thinkingGif: require('./assets/thinking.gif'),
   bobAllison: require('./assets/bob-allison.png'),
   waitWhatGif: require('./assets/wait-what.gif'),
+  clickjackingDescription: require('./assets/Clickjacking_description.png'),
+  maskedIframe: require('./assets/Masked_iframe.png'),
   icons: {
     desktopCode: require('./assets/icons/desktop_code_noun_326368_FFFFFF.svg'),
     magnifyingGlass: require('./assets/icons/magnifying_glass_noun_326365_FFFFFF.svg'),
@@ -278,7 +280,7 @@ export default class Presentation extends React.Component {
             <Heading size={2}>I thought of everything</Heading>
             <List>
               <ListItem>Only HTTPS, no mixed content </ListItem>
-              <ListItem>It even uses HSTS </ListItem>
+              <ListItem>It even uses HSTS (HTTP Strict Transport Security)</ListItem>
               <ListItem>No room for SQL injections </ListItem>
               <ListItem>Sanitized HTML</ListItem>
             </List>
@@ -407,6 +409,18 @@ export default class Presentation extends React.Component {
             <Heading size={2}>What about clickjacking?</Heading>
           </Slide>
           <Slide>
+            <Heading size={2}>Clickjacking</Heading>
+            <Layout>
+              <Fill>
+                <Image src={images.clickjackingDescription} width="100%" />
+              </Fill>
+              <Fill>
+                <Image src={images.maskedIframe} width="100%"/>
+              </Fill>
+            </Layout>
+              <Link href="https://www.owasp.org/index.php/Testing_for_Clickjacking_(OTG-CLIENT-009)"><Text textSize="0.8rem">Source: www.owasp.org</Text></Link>
+          </Slide>
+          <Slide>
             <Heading size={2}>Disallow iFraming</Heading>
             <CodePane
               lang="javascript"
@@ -442,6 +456,15 @@ export default class Presentation extends React.Component {
             bgSize="contain"
             bgRepeat="no-repeat"
           />
+          <Slide
+            bgImage={images.samyWorm}
+            bgSize="contain"
+            bgRepeat="no-repeat"
+            bgDarken={0.7}
+          >
+            <Heading size={2}>MySpace Worm</Heading>
+            <Heading size={3}>Samy worm / JS.Spacehero worm</Heading>
+          </Slide>
           <Slide>
             <Heading size={2}>Tricks used by Samy</Heading>
             <CodePane
@@ -452,7 +475,7 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/samy-join-strings.js')}
             />
-            <Link href="http://samy.pl/popular/tech.html">
+            <Link href="http://samy.pl/popular/tech.html" style={{marginTop: '2rem'}}>
               <Text>samy.pl/popular/tech.html</Text>
             </Link>
           </Slide>
