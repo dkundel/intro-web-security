@@ -41,10 +41,8 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-http';
 
-
 const HASHTAGS = '#angularconnect';
 const SLIDE_URL = 'bit.ly/sec-angularconnect';
-
 
 const theme = createTheme();
 
@@ -65,7 +63,7 @@ const Footer = ({ name, twitter, hashtags }) => {
           target="_blank"
           style={theme.screen.global.a}
         >
-          @{twitter}
+          <img src={images.icons.twitter} style={{ height: '0.8em' }} /> @{twitter}
         </a>{' '}
         | {hashtags}{' '}
       </p>
@@ -83,16 +81,38 @@ const Mono = ({ children }) => {
 };
 
 const LinkedImage = props => {
-  let { src, href, target, style, width, height, rel, children, ...restProps } = props;
+  let {
+    src,
+    href,
+    target,
+    style,
+    width,
+    height,
+    rel,
+    children,
+    ...restProps
+  } = props;
   target = target || '_blank';
   rel = rel === undefined ? 'noopener noreferrer' : rel;
   const linkStyles = { border: 'none', ...style };
   return (
     <a href={href} target={target} style={linkStyles} rel={rel} {...restProps}>
-      <Image src={src} width={width} height={height} />
-      {' '}
-      { children }
+      <Image src={src} width={width} height={height} /> {children}
     </a>
+  );
+};
+
+const ResourceLinkWithIcon = ({ url, icon, text = '' }) => {
+  text = text || url;
+  return (
+    <div>
+      <div>
+        <LinkedImage src={icon} href={'https://' + url} height="300px" />
+      </div>
+      <Link href={'https://' + url} rel="noopener noreferrer" target="_blank">
+        <Text>{text}</Text>
+      </Link>
+    </div>
   );
 };
 
@@ -137,11 +157,7 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <div>
-        <Footer
-          name="Dominik Kundel"
-          twitter="dkundel"
-          hashtags={HASHTAGS}
-        />
+        <Footer name="Dominik Kundel" twitter="dkundel" hashtags={HASHTAGS} />
         <Deck theme={theme} progress="bar">
           <Slide bgImage={images.hackerWallpaper} bgDarken={0.5}>
             <Heading size={3}> Introduction to </Heading>
@@ -150,25 +166,63 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Layout>
-              <Fit style={{display: 'flex', alignItems: 'center'}}>
+              <Fit style={{ display: 'flex', alignItems: 'center' }}>
                 <Image src={images.meNeutral} />
               </Fit>
-              <Fill style={{marginLeft: '5rem', textAlign: 'center'}}>
-                <Text textSize='4rem'><S type="italic">Hi!</S></Text>
-                <Text textSize='2rem'><S type="italic">I'm Dominik Kundel!</S></Text>
-                <Text style={{marginTop: '50px'}}>Developer Evangelist at</Text>
+              <Fill style={{ marginLeft: '5rem', textAlign: 'center' }}>
+                <Text textSize="4rem">
+                  <S type="italic">Hi!</S>
+                </Text>
+                <Text textSize="2rem">
+                  <S type="italic">I'm Dominik Kundel!</S>
+                </Text>
+                <Text style={{ marginTop: '50px' }}>
+                  Developer Evangelist at
+                </Text>
                 <Image src={images.twilio} height="100px" />
-                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '50px', textAlign: 'center'}}>
-                <LinkedImage src={images.icons.github} height="80px" href="https://github.com/dkundel"><Text textSize="1.3rem">github/dkundel</Text></LinkedImage>
-                <LinkedImage src={images.icons.twitter} height="80px" href="https://twitter.com/dkundel"><Text textSize="1.3rem">@dkundel</Text></LinkedImage>
-                <LinkedImage src={images.icons.email} height="80px" href="mailto:dkundel@twilio.com"><Text textSize="1.3rem">dkundel@twilio.com</Text></LinkedImage>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    marginTop: '50px',
+                    textAlign: 'center'
+                  }}
+                >
+                  <LinkedImage
+                    src={images.icons.github}
+                    height="80px"
+                    href="https://github.com/dkundel"
+                  >
+                    <Text textSize="1.3rem">github/dkundel</Text>
+                  </LinkedImage>
+                  <LinkedImage
+                    src={images.icons.twitter}
+                    height="80px"
+                    href="https://twitter.com/dkundel"
+                  >
+                    <Text textSize="1.3rem">@dkundel</Text>
+                  </LinkedImage>
+                  <LinkedImage
+                    src={images.icons.email}
+                    height="80px"
+                    href="mailto:dkundel@twilio.com"
+                  >
+                    <Text textSize="1.3rem">dkundel@twilio.com</Text>
+                  </LinkedImage>
                 </div>
               </Fill>
             </Layout>
           </Slide>
           <Slide>
-            <Image src={images.twilio} height="5rem" style={{marginBottom: '3rem'}}/>
-            <Heading size={4} fit>Add messaging, voice, video and authentication in your apps with the language you already use</Heading>
+            <Image
+              src={images.twilio}
+              height="5rem"
+              style={{ marginBottom: '3rem' }}
+            />
+            <Heading size={4} fit>
+              Add messaging, voice, video and authentication in your apps with
+              the language you already use
+            </Heading>
             <CodePane
               lang="javascript"
               source={require('!!raw-loader!./snippets/twilio.js')}
@@ -223,7 +277,9 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>
-              No real database<br /><Mono>===</Mono><br />No real database injections
+              No real database<br />
+              <Mono>===</Mono>
+              <br />No real database injections
             </Heading>
             <Image src={images.thinkingGif} />
           </Slide>
@@ -244,13 +300,13 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <div>
-            <LinkedImage
-              src={images.onesieScreenshot}
-              width="80%"
-              href="https://onesie.life"
-              rel="noopener noreferrer"
-              target="_blank"
-            />
+              <LinkedImage
+                src={images.onesieScreenshot}
+                width="80%"
+                href="https://onesie.life"
+                rel="noopener noreferrer"
+                target="_blank"
+              />
             </div>
             <Link
               href="https://onesie.life"
@@ -290,34 +346,18 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>Let's post something!</Heading>
-            <div>
-              <LinkedImage
-                src={images.icons.desktopCode}
-                href="https://onesie.life/home"
-                height="300px"
-              />
-            </div>
-            <Link
-              href="https://onesie.life"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Text>onesie.life Feed</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url="onesie.life/home"
+              icon={images.icons.desktopCode}
+              text="onesie.life Feed"
+            />
           </Slide>
           <Slide>
             <Heading size={2}>Cross Site Request Forgery</Heading>
-            <div>
-              <LinkedImage
-                src={images.icons.hacker}
-                href="https://hack-onesie.glitch.me"
-                height="300px"
-                rel=""
-              />
-            </div>
-            <Link href="https://hack-onesie.glitch.me" target="_blank">
-              <Text>hack-onesie.glitch.me</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url="hack-onesie.glitch.me"
+              icon={images.icons.hacker}
+            />
           </Slide>
           <Slide>
             <Heading size={2}>What happened?</Heading>
@@ -371,21 +411,11 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>X-Frame-Options Demo</Heading>
-            <div>
-              <LinkedImage
-                src={images.icons.hacker}
-                href="https://hack-onesie.glitch.me/frame"
-                height="300px"
-                rel=""
-              />
-            </div>
-            <Link
-              href="https://hack-onesie.glitch.me/frame"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Text>Demo</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url="hack-onesie.glitch.me/frame"
+              icon={images.icons.hacker}
+              text="Framing Demo"
+            />
           </Slide>
           <Slide>
             <Heading size={3}> Little Bobby Tables Young Brother </Heading>
@@ -427,20 +457,11 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>Blocking XSS Is Not Trivial</Heading>
-            <div>
-              <LinkedImage
-                src={images.icons.desktopCode}
-                href="https://onesie.life/home"
-                height="300px"
-              />
-            </div>
-            <Link
-              href="https://onesie.life"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Text>onesie.life</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url="onesie.life/home"
+              icon={images.icons.desktopCode}
+              text="onesie.life"
+            />
           </Slide>
           <Slide>
             <Heading>
@@ -450,16 +471,10 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>CSS can be dangerous!</Heading>
-            <div>
-              <LinkedImage
-                src={images.icons.desktopCode}
-                href="https://codesandbox.io/s/llnzkwk0mz"
-                height="300px"
-              />
-            </div>
-            <Link href="https://codesandbox.io/s/llnzkwk0mz">
-              <Text>codesandbox.io/s/llnzkwk0mz</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url="codesandbox.io/s/llnzkwk0mz"
+              icon={images.icons.desktopCode}
+            />
           </Slide>
           <Slide>
             <Heading>JSONP</Heading>
@@ -467,20 +482,10 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>XSS + poor JSONP = 💖</Heading>
-            <div>
-              <LinkedImage
-                src={images.icons.desktopCode}
-                href="https://onesie.life"
-                height="300px"
-              />
-            </div>
-            <Link
-              href="https://onesie.life"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Text>onesie.life</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url="onesie.life"
+              icon={images.icons.desktopCode}
+            />
           </Slide>
           <Slide>
             <Image height="300px" src={images.icons.superhero} />
@@ -490,20 +495,10 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>CSP Demo</Heading>
-            <div>
-              <LinkedImage
-                src={images.icons.desktopCode}
-                href="https://onesie.life/secure/home"
-                height="300px"
-              />
-            </div>
-            <Link
-              href="https://onesie.life/secure/home"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Text>onesie.life/secure/home</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url="onesie.life/secure/home"
+              icon={images.icons.desktopCode}
+            />
           </Slide>
           <Slide>
             <Heading size={2}>CSP Example Header</Heading>
@@ -544,59 +539,82 @@ export default class Presentation extends React.Component {
             <Text>Summary</Text>
           </Slide>
           <Slide>
-          <div>
-              <LinkedImage
-                src={images.icons.slideDownload}
-                href={'https://'+SLIDE_URL}
-                height="300px"
-              />
-            </div>
-            <Link
-              href={'https://'+SLIDE_URL}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Text>{SLIDE_URL}</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url={SLIDE_URL}
+              icon={images.icons.slideDownload}
+            />
           </Slide>
           <Slide>
-          <div>
-              <LinkedImage
-                src={images.icons.github}
-                href="https://github.com/dkundel/onesie-life"
-                height="300px"
-              />
-            </div>
-            <Link
-              href="https://github.com/dkundel/onesie-life"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Text>github.com/dkundel/onesie-life</Text>
-            </Link>
+            <ResourceLinkWithIcon
+              url="github.com/dkundel/onesie-life"
+              icon={images.icons.github}
+            />
           </Slide>
           <Slide>
             <Layout>
-              <Fit style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+              <Fit
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column'
+                }}
+              >
                 <Image src={images.meNeutral} />
-                <Text style={{marginTop: '50px'}}><S type="italic">Dominik Kundel</S></Text>
+                <Text style={{ marginTop: '50px' }}>
+                  <S type="italic">Dominik Kundel</S>
+                </Text>
               </Fit>
-              <Fill style={{marginLeft: '5rem', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-                <Text textSize='4rem'><S type="italic">Thank You!</S></Text>
+              <Fill
+                style={{
+                  marginLeft: '5rem',
+                  textAlign: 'center',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between'
+                }}
+              >
+                <Text textSize="4rem">
+                  <S type="italic">Thank You!</S>
+                </Text>
                 <Image src={images.twilio} height="180px" />
-                <div style={{marginTop: '50px'}}>
-                <Link
-              href={'https://'+SLIDE_URL}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Text>{SLIDE_URL}</Text>
-            </Link>
-            </div>
-                <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '50px', textAlign: 'center'}}>
-                <LinkedImage src={images.icons.github} height="80px" href="https://github.com/dkundel"><Text textSize="1.3rem">github/dkundel</Text></LinkedImage>
-                <LinkedImage src={images.icons.twitter} height="80px" href="https://twitter.com/dkundel"><Text textSize="1.3rem">@dkundel</Text></LinkedImage>
-                <LinkedImage src={images.icons.email} height="80px" href="mailto:dkundel@twilio.com"><Text textSize="1.3rem">dkundel@twilio.com</Text></LinkedImage>
+                <div style={{ marginTop: '50px' }}>
+                  <Link
+                    href={'https://' + SLIDE_URL}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <Text>{SLIDE_URL}</Text>
+                  </Link>
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    marginTop: '50px',
+                    textAlign: 'center'
+                  }}
+                >
+                  <LinkedImage
+                    src={images.icons.github}
+                    height="80px"
+                    href="https://github.com/dkundel"
+                  >
+                    <Text textSize="1.3rem">github/dkundel</Text>
+                  </LinkedImage>
+                  <LinkedImage
+                    src={images.icons.twitter}
+                    height="80px"
+                    href="https://twitter.com/dkundel"
+                  >
+                    <Text textSize="1.3rem">@dkundel</Text>
+                  </LinkedImage>
+                  <LinkedImage
+                    src={images.icons.email}
+                    height="80px"
+                    href="mailto:dkundel@twilio.com"
+                  >
+                    <Text textSize="1.3rem">dkundel@twilio.com</Text>
+                  </LinkedImage>
                 </div>
               </Fill>
             </Layout>
