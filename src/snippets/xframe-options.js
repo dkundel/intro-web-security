@@ -1,2 +1,2 @@
-res.headers('X-Frame-Options', 'deny');
-res.headers('X-Frame-Options', 'self');
+res.headers('X-Frame-Options', 'DENY');
+res.headers('X-Frame-Options', 'SAMEORIGIN');
