@@ -130,6 +130,7 @@ const images = {
   samyWorm: require('./assets/samy-worm.png'),
   onesieScreenshot: require('./assets/onesie-life-screenshot.png'),
   hackerWallpaper: require('./assets/hacker-wallpaper.jpg'),
+  matrixWallpaper: require('./assets/matrix-wallpaper.jpg'),
   socialMediaWallpaper: require('./assets/social-media-wallpaper.jpg'),
   hackerGif: require('./assets/hacker.gif'),
   thinkingGif: require('./assets/thinking.gif'),
@@ -159,10 +160,17 @@ export default class Presentation extends React.Component {
       <div>
         <Footer name="Dominik Kundel" twitter="dkundel" hashtags={HASHTAGS} />
         <Deck theme={theme} progress="bar">
-          <Slide bgImage={images.hackerWallpaper} bgDarken={0.5}>
-            <Heading size={3}> Introduction to </Heading>
-            <Heading> Web Security </Heading>
+          <Slide bgImage={images.matrixWallpaper} bgDarken={0.5}>
             <Image src={images.icons.webSecurity} height={200} />
+            <Heading size={3}>XSS, CSRF, CSP, JWT, WTF? IDK</Heading>
+            <Heading size={2}><Mono>¯\_(ツ)_/¯</Mono></Heading>
+            <Heading size={4}>Dominik Kundel - <Link href="https://twitter.com/dkundel">@dkundel</Link></Heading>
+          </Slide>
+          <Slide bgImage={images.matrixWallpaper} bgDarken={0.5}>
+            <Image src={images.icons.webSecurity} height={200} />
+            <Heading size={3}>Introduction to</Heading>
+            <Heading size={2}>Web Security</Heading>
+            <Heading size={4}>Dominik Kundel - <Link href="https://twitter.com/dkundel">@dkundel</Link></Heading>
           </Slide>
           <Slide>
             <Layout>
@@ -355,7 +363,7 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={2}>Cross Site Request Forgery</Heading>
             <ResourceLinkWithIcon
-              url="hack-onesie.glitch.me"
+              url="hack-onesie.glitch.me/xsrf"
               icon={images.icons.hacker}
             />
           </Slide>
