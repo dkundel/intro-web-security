@@ -46,6 +46,14 @@ const SLIDE_URL = 'bit.ly/sec-angularconnect';
 
 const theme = createTheme();
 
+const LargeNotes = ({ children }) => {
+  return (
+    <Notes>
+      <p style={{ fontSize: '3.5rem' }}>{children}</p>
+    </Notes>
+  );
+};
+
 const Footer = ({ name, twitter, hashtags }) => {
   const footerStyles = {
     position: 'fixed',
@@ -172,7 +180,7 @@ export default class Presentation extends React.Component {
               Dominik Kundel -{' '}
               <Link href="https://twitter.com/dkundel">@dkundel</Link>
             </Heading>
-            <Notes>Welcome everyone!</Notes>
+            <LargeNotes>Welcome everyone!</LargeNotes>
           </Slide>
           <Slide bgImage={images.matrixWallpaper} bgDarken={0.5}>
             <Image src={images.icons.webSecurity} height={200} />
@@ -182,10 +190,10 @@ export default class Presentation extends React.Component {
               Dominik Kundel -{' '}
               <Link href="https://twitter.com/dkundel">@dkundel</Link>
             </Heading>
-            <Notes>
+            <LargeNotes>
               Over the next 25 minutes I would like to take you through an
               introduction to web security.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Layout>
@@ -235,11 +243,11 @@ export default class Presentation extends React.Component {
                 </div>
               </Fill>
             </Layout>
-            <Notes>
+            <LargeNotes>
               But first let me introduce myself. I'm Dominik.You can reach me
               pretty much everywhere on the internet under @dkundel. I live in
               Berlin and I work as a developer evangelist at Twilio.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Image
@@ -255,17 +263,17 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/twilio.js')}
             />
-            <Notes>
+            <LargeNotes>
               In case you don't know Twilio. Twilio is a cloud communication
               platform that allows you as developers to easily integrate
               different means of communication such as voice, video or messaging
               into your applications using the languages you already know.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide bgColor="black">
-            <Notes>
+            <LargeNotes>
               There is one more thing you should know about me though
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide
             bgImage={images.onesieJs}
@@ -280,31 +288,31 @@ export default class Presentation extends React.Component {
             >
               #onesiejs
             </Heading>
-            <Notes>
+            <LargeNotes>
               I'm a member of a group of onesie loving JavaScript developers.
               Also known as #onesiejs
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide bgImage={images.socialMediaWallpaper}>
-            <Notes>
+            <LargeNotes>
               Today we have so many social networks and communication
               channels.But there isn 't really one for onesie loving developers.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide bgImage={images.socialMediaWallpaper} bgDarken={0.5}>
             <Image src={images.onesieScreenshot} width="70%" />
-            <Notes>
+            <LargeNotes>
               So I did what every developer would do and built one myself.
               Introducing onesie.life
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Security! Security! Security!</Heading>
             <Image src={images.hackerGif} />
-            <Notes>
+            <LargeNotes>
               Being an experienced developer I obviously made sure that this
               application is as secure as possible.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>I thought of everything</Heading>
@@ -317,12 +325,12 @@ export default class Presentation extends React.Component {
               <ListItem>Sanitized HTML</ListItem>
               <ListItem>No room for SQL injections </ListItem>
             </List>
-            <Notes>
+            <LargeNotes>
               It uses HTTPS 100% for free thanks to Let's Encrypt, it uses HSTS,
               doesn't allow mixed content, I sanitize the HTML input that the
               users can do via Markdown and don't allow room for any SQL
               injections.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>
@@ -331,26 +339,26 @@ export default class Presentation extends React.Component {
               <br />No real database injections
             </Heading>
             <Image src={images.thinkingGif} />
-            <Notes>
+            <LargeNotes>
               Because if you odn't use an actual database you can't have
               database injections right? Please note that yes there are also
               NoSQL injections but we won't have time to dig into these today.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide bgColor="black">
-            <Notes>
+            <LargeNotes>
               Turns out developing secure web applications isn 't as easy as I
               thought.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Image src={images.bobAllison} />
             <Heading size={2}>Bob Allison</Heading>
             <Text>Security Expert</Text>
-            <Notes>
+            <LargeNotes>
               I asked my buddy Bob Allison to take a stab at the app and he
               found a bunch of vulnerabilites that I wanted to share with you
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <div>
@@ -369,7 +377,10 @@ export default class Presentation extends React.Component {
             >
               <Text>https://onesie.life</Text>
             </Link>
-            <Notes> Alright so let's take a look at onesie.life. DEMO.</Notes>
+            <LargeNotes>
+              {' '}
+              Alright so let's take a look at onesie.life. DEMO.
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>
@@ -379,10 +390,10 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/http-only-cookie.js')}
             />
-            <Notes>
+            <LargeNotes>
               You should make sure to mark cookies you don 't have to access in
               JS always as HttpOnly
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>
@@ -392,11 +403,11 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/jwt-algorithm.js')}
             />
-            <Notes>
+            <LargeNotes>
               Additionally you should make sure to have a secure, up-to-date JWT
               implementation that allows you to define the set of valid
               algorithms.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Let's post something!</Heading>
@@ -405,10 +416,10 @@ export default class Presentation extends React.Component {
               icon={images.icons.desktopCode}
               text="onesie.life Feed"
             />
-            <Notes>
+            <LargeNotes>
               Obviously in a social network we want to be able to post some
               things. So let's jump to the feed and post something.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Cross Site Request Forgery</Heading>
@@ -416,19 +427,19 @@ export default class Presentation extends React.Component {
               url="hack-onesie.glitch.me/xsrf"
               icon={images.icons.hacker}
             />
-            <Notes>
+            <LargeNotes>
               Now the danger of POST requests is that an attacker can use them
               to perform so call CSRF attacks. Let's take a look at how this
               works.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>What happened?</Heading>
             <Image src={images.waitWhatGif} />
-            <Notes>
+            <LargeNotes>
               Alright so before we talk about how we can protect ourselves from
               CSRF attacks, let's talk about what just happened.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>
@@ -438,12 +449,12 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/opener-redirect.js')}
             />
-            <Notes>
+            <LargeNotes>
               When we opened the Glitch page it was able to access the page that
               opened it and manipulate it's URL. In our case we navigated it to
               a harmless page but it could redirect it as well to a phishing
               page without the user noticing.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>
@@ -453,11 +464,11 @@ export default class Presentation extends React.Component {
               lang="html"
               source={require('!!raw-loader!./snippets/noopener.html')}
             />
-            <Notes>
+            <LargeNotes>
               We can avoid this by using the rel attribute. noopener works in
               all modern browsers but IE and Edge. You could alternatively use a
               framebuster script however it can be easily circumvented.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>
@@ -468,21 +479,21 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/csrf-tokens.js')}
             />
-            <Notes>
+            <LargeNotes>
               Alright let's talk again about CSRF. Make sure to use CSRF tokens
               for your POST requests to avoid these types of attacks. Basically
               the idea is that we set a value in a cookie that is either
               transmitted via a header or via the POST body. The idea is that
               the cookie is automatically transferred but the other ones have to
               be set manually.
-            </Notes>
+            </LargeNotes>
           </Slide>
-          <Slide>
+          {/* <Slide>
             <Heading size={2}>What about clickjacking?</Heading>
-            <Notes>
+            <LargeNotes>
               With CSRF protection in place a common way to circumvent it is
               using Clickjacking.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Clickjacking</Heading>
@@ -497,11 +508,11 @@ export default class Presentation extends React.Component {
             <Link href="https://www.owasp.org/index.php/Testing_for_Clickjacking_(OTG-CLIENT-009)">
               <Text textSize="0.8rem">Source: www.owasp.org</Text>
             </Link>
-            <Notes>
+            <LargeNotes>
               The idea in clickjacking is to load an iframe and lay it over the
               UI you want the user to see and believe and then set the opacity
               to 0.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Disallow iFraming</Heading>
@@ -509,12 +520,12 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/xframe-options.js')}
             />
-            <Notes>
+            <LargeNotes>
               The solution to this is actually pretty straight forward. Don 't
               allow iframing your application unless you absolutely need it for
               a feature. And even then limit the access. You can do this by
               using the x-frame-options header. I'll show you another way later.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>X-Frame-Options Demo</Heading>
@@ -523,38 +534,40 @@ export default class Presentation extends React.Component {
               icon={images.icons.hacker}
               text="Framing Demo"
             />
-            <Notes>
+            <LargeNotes>
               Let's take a quick peek at how the difference looks like.
-            </Notes>
-          </Slide>
+            </LargeNotes>
+          </Slide> */}
           <Slide>
             <Heading size={3}> Little Bobby Tables Young Brother </Heading>
             <Heading fit>
               <Mono>Samy '"src="javascript:alert(1);// XSS</Mono>
             </Heading>
-            <Notes>
+            <LargeNotes>
               Alright let's talk about Little Bobby Tables young brother. Samy
               the XSS attack.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Image src={images.bobbyTables} width="100%" />
             <Link href="https://xkcd.com/327/">
               <Text>https://xkcd.com/327/</Text>
             </Link>
-            <Notes>
+            <LargeNotes>
               If you don't know the story around Bobby Tables. It originates
               from an XKCD comic about SQL injections. But while most people
               have SQL injections in their mind, less people think about XSS as
               a danger. And especially not how much harder it is to block.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide
             bgImage={images.samyWorm}
             bgSize="contain"
             bgRepeat="no-repeat"
           >
-            <Notes>This is the source code of a very famous XSS attack.</Notes>
+            <LargeNotes>
+              This is the source code of a very famous XSS attack.
+            </LargeNotes>
           </Slide>
           <Slide
             bgImage={images.samyWorm}
@@ -564,10 +577,10 @@ export default class Presentation extends React.Component {
           >
             <Heading size={2}>MySpace Worm</Heading>
             <Heading size={3}>Samy worm / JS.Spacehero worm</Heading>
-            <Notes>
+            <LargeNotes>
               If you are not familiar with it, it's the source code of the
               MySpace worm from 2005.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Tricks used by Samy</Heading>
@@ -585,11 +598,11 @@ export default class Presentation extends React.Component {
             >
               <Text>samy.pl/popular/tech.html</Text>
             </Link>
-            <Notes>
+            <LargeNotes>
               MySpace did a lot of work trying to block XSS attacks. However,
               Samy used a bunch of tricks to get around it. These are just two
               tricks that Samy used for his XSS attack.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Obstrusive JavaScript</Heading>
@@ -597,12 +610,12 @@ export default class Presentation extends React.Component {
               lang="javascript"
               source={require('!!raw-loader!./snippets/obstrusive-javascript.js')}
             />
-            <Notes>
+            <LargeNotes>
               Leaving aside this there is a lot of ways to achieve obstrusive
               JavaScript. This is just an example of different ways to achieve
               eval. The last one is actually generated by a project that allows
               you to write any JavaScript with just 6 characters.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Blocking XSS Is Not Trivial</Heading>
@@ -611,34 +624,34 @@ export default class Presentation extends React.Component {
               icon={images.icons.desktopCode}
               text="onesie.life"
             />
-            <Notes>
+            <LargeNotes>
               The bottom line here is that XSS is not trivial to block. Let's
               see an example in the onesie.life app. DEMO.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading>
               Encoding can be{' '}
               <em style={{ textTransform: 'none' }}>dangerous</em>!
             </Heading>
-            <Notes>
+            <LargeNotes>
               So we've seen here that encoding can be incredibly dangerous since
               it significantly increases the ways that we can approach things.
               Especially if the browser as quirkynesses like the one we've seen.
-            </Notes>
+            </LargeNotes>
           </Slide>
-          <Slide>
+          {/* <Slide>
             <Heading size={2}>CSS can be dangerous!</Heading>
             <ResourceLinkWithIcon
               url="codesandbox.io/s/llnzkwk0mz"
               icon={images.icons.desktopCode}
             />
-            <Notes>
+            <LargeNotes>
               And not only JavaScript can be dangerous for XSS attacks. Let's
               look at an example here that is powered by React and Styled
               Components.
-            </Notes>
-          </Slide>
+            </LargeNotes>
+          </Slide> */}
           <Slide>
             <Heading>JSONP</Heading>
             <Heading size={3}>JSON with Padding</Heading>
@@ -646,10 +659,10 @@ export default class Presentation extends React.Component {
               lang="html"
               source={require('!!raw-loader!./snippets/jsonp-example.html')}
             />
-            <Notes>
+            <LargeNotes>
               Let's talk about JSONP. It's the way that was commonly used to
               circumvent things like Same Origin Policites.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>XSS + poor JSONP = 💖</Heading>
@@ -657,23 +670,23 @@ export default class Presentation extends React.Component {
               url="onesie.life"
               icon={images.icons.desktopCode}
             />
-            <Notes>
+            <LargeNotes>
               The problem is that a poorly implemented JSONP in combination with
               an XSS vulnerability can create a very dangerous attack vector
               thanks to Service Workers. DEMO.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Image height="300px" src={images.icons.superhero} />
             <Heading fit>
               <Mono>Content-Security-Policy</Mono>
             </Heading>
-            <Notes>
+            <LargeNotes>
               So far we've seen several different XSS attacks and we should fix
               all of these if we have them in our applications. But luckily
               there is a new superhero in town that can help us with this. The
               name of this super hero is CSP or Content-Security-Policy.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>CSP Demo</Heading>
@@ -681,7 +694,9 @@ export default class Presentation extends React.Component {
               url="onesie.life/secure/home"
               icon={images.icons.desktopCode}
             />
-            <Notes>Let's look at the same page with CSP configured.</Notes>
+            <LargeNotes>
+              Let's look at the same page with CSP configured.
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>CSP Example Header</Heading>
@@ -689,7 +704,9 @@ export default class Presentation extends React.Component {
               lang="http"
               source={require('!!raw-loader!./snippets/csp-header.snippet')}
             />
-            <Notes>This is an example header how to turn on CSP.</Notes>
+            <LargeNotes>
+              This is an example header how to turn on CSP.
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>
@@ -697,15 +714,19 @@ export default class Presentation extends React.Component {
             </Heading>
             <Image src={images.icons.safetyNet} height="300px" />
             <Heading size={3}>CSP is a Safety Net!</Heading>
-            <Notes>
+            <LargeNotes>
               The important thing to keep in your mind is that CSP should not be
               your security strategy but you should rather treat it as a safety
               net.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Other things to look out for</Heading>
             <List>
+              <ListItem>
+                Avoid clickjacking by disallowing framing using{' '}
+                <Code>X-Frame-Options: deny</Code>
+              </ListItem>
               <ListItem>
                 Don't show versions of front-end libs or server
               </ListItem>
@@ -713,10 +734,10 @@ export default class Presentation extends React.Component {
                 Check for types of input(Can cause NoSQL injections)
               </ListItem>
             </List>
-            <Notes>
+            <LargeNotes>
               So we've seen a bunch of things we should keep an eye on for our
               web applications. A few other ones to consider are.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Heading size={2}>Other things to do</Heading>
@@ -727,10 +748,10 @@ export default class Presentation extends React.Component {
                 Use tools to detect security vulnerabilites (Snyk)
               </ListItem>
             </List>
-            <Notes>
+            <LargeNotes>
               Additionally you should consider a regular security audit for your
               applications if you don't have a security expert on your crew.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Text>Summary</Text>
@@ -740,23 +761,23 @@ export default class Presentation extends React.Component {
               url={SLIDE_URL}
               icon={images.icons.slideDownload}
             />
-            <Notes>
+            <LargeNotes>
               If you want to take a look at the slides again, check out this
               link. I'll also tweet about it.
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <ResourceLinkWithIcon
               url="github.com/dkundel/onesie-life"
               icon={images.icons.github}
             />
-            <Notes>
+            <LargeNotes>
               Additionally you can check out the source code of the onesie.life
               page including documentation of all the vulnerabilities in the
               GitHub repo. If you find additional vulnerabilities, please feel
               free to create an issue on GitHub. I believe security is all about
               learning new things and sharing them
-            </Notes>
+            </LargeNotes>
           </Slide>
           <Slide>
             <Layout>
@@ -826,11 +847,11 @@ export default class Presentation extends React.Component {
                 </div>
               </Fill>
             </Layout>
-            <Notes>
+            <LargeNotes>
               With that thanks a lot for your attention. If you have any
               questions, I'll be around for the next two days at the Twilio
               booth. So feel free to come around and chat with me.
-            </Notes>
+            </LargeNotes>
           </Slide>
         </Deck>
       </div>
