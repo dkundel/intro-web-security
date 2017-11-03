@@ -10,7 +10,8 @@ async function run() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto('http://localhost:3000/#/?export', {
-    waitUntil: 'networkidle'
+    waitUntil: 'networkidle',
+    networkIdleTimeout: 2000
   });
   await page.pdf({
     path,
