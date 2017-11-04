@@ -49,7 +49,7 @@ const theme = createTheme();
 const LargeNotes = ({ children }) => {
   return (
     <Notes>
-      <p style={{ fontSize: '3.5rem' }}>{children}</p>
+      <p style={{ fontSize: '20px' }}>{children}</p>
     </Notes>
   );
 };
