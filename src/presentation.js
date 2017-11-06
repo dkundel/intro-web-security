@@ -811,7 +811,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <ResourceLinkWithIcon
-              url="github.com/dkundel/onesie-life"
+              url="bit.ly/onesie-life"
               icon={images.icons.github}
             />
             <LargeNotes>
