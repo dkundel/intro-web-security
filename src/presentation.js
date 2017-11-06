@@ -754,34 +754,50 @@ export default class Presentation extends React.Component {
             </LargeNotes>
           </Slide>
           <Slide>
-            <Text>Summary</Text>
+            <Heading>
+              <em style={{ textTransform: 'none' }}>Summary</em>
+            </Heading>
           </Slide>
           <Slide>
-            <Heading>Use signed `HttpOnly`</Heading>
+            <Heading size={2}>
+              Use signed <Mono>HttpOnly</Mono>
+            </Heading>
           </Slide>
           <Slide>
-            <Heading>Be sceptical of JWTs</Heading>
+            <Heading size={2}>
+              Be sceptical of <Mono>JWT</Mono>s
+            </Heading>
           </Slide>
           <Slide>
-            <Heading>`rel="noopener noreferrer"`</Heading>
+            <Heading size={2} fit>
+              <Mono>rel="noopener noreferrer"</Mono>
+            </Heading>
           </Slide>
           <Slide>
-            <Heading>Use `CSRF` tokens</Heading>
+            <Heading size={2}>
+              Use <Mono>CSRF</Mono> tokens
+            </Heading>
           </Slide>
           <Slide>
-            <Heading>Blocking XSS isn't trivial</Heading>
+            <Heading size={2}>
+              Blocking <Mono>XSS</Mono> isn't trivial
+            </Heading>
           </Slide>
           <Slide>
-            <Heading>Be aware of encoding</Heading>
+            <Heading size={2}>Be aware of encoding</Heading>
           </Slide>
           <Slide>
-            <Heading>Be careful with JSONP</Heading>
+            <Heading size={2}>
+              Be careful with <Mono>JSONP</Mono>
+            </Heading>
           </Slide>
           <Slide>
-            <Heading>Use CSP as a safety net</Heading>
+            <Heading size={2}>
+              Use <Mono>CSP</Mono> as a safety net
+            </Heading>
           </Slide>
           <Slide>
-            <Heading>Stay up to date</Heading>
+            <Heading size={2}>Stay up to date</Heading>
           </Slide>
           <Slide>
             <ResourceLinkWithIcon
