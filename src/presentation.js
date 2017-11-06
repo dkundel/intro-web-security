@@ -757,6 +757,33 @@ export default class Presentation extends React.Component {
             <Text>Summary</Text>
           </Slide>
           <Slide>
+            <Heading>Use signed `HttpOnly`</Heading>
+          </Slide>
+          <Slide>
+            <Heading>Be sceptical of JWTs</Heading>
+          </Slide>
+          <Slide>
+            <Heading>`rel="noopener noreferrer"`</Heading>
+          </Slide>
+          <Slide>
+            <Heading>Use `CSRF` tokens</Heading>
+          </Slide>
+          <Slide>
+            <Heading>Blocking XSS isn't trivial</Heading>
+          </Slide>
+          <Slide>
+            <Heading>Be aware of encoding</Heading>
+          </Slide>
+          <Slide>
+            <Heading>Be careful with JSONP</Heading>
+          </Slide>
+          <Slide>
+            <Heading>Use CSP as a safety net</Heading>
+          </Slide>
+          <Slide>
+            <Heading>Stay up to date</Heading>
+          </Slide>
+          <Slide>
             <ResourceLinkWithIcon
               url={SLIDE_URL}
               icon={images.icons.slideDownload}
