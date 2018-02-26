@@ -41,8 +41,8 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-http';
 
-const HASHTAGS = '#angularconnect';
-const SLIDE_URL = 'bit.ly/sec-angularconnect';
+const HASHTAGS = '#jsconfis';
+const SLIDE_URL = 'd-k.im/sec-jsconfis';
 
 const theme = createTheme();
 
@@ -71,7 +71,9 @@ const Footer = ({ name, twitter, hashtags }) => {
           target="_blank"
           style={theme.screen.global.a}
         >
-          <img src={images.icons.twitter} style={{ height: '0.8em' }} /> @{twitter}
+          <img src={images.icons.twitter} style={{ height: '0.8em' }} /> @{
+            twitter
+          }
         </a>{' '}
         | {hashtags}{' '}
       </p>
@@ -169,7 +171,28 @@ export default class Presentation extends React.Component {
     return (
       <div>
         <Footer name="Dominik Kundel" twitter="dkundel" hashtags={HASHTAGS} />
-        <Deck theme={theme} progress="bar">
+        <Deck theme={theme} progress="none">
+          <Slide bgColor="black">
+            <LargeNotes>
+              Setup:
+              <ul>
+                <li>Open slides in one tab: http://localhost:3000</li>
+                <li>Open http://jwt.io</li>
+                <li>
+                  Open
+                  https://glitch.com/edit/#!/hack-onesie?path=xsrf/attack.html:1:0
+                </li>
+                <li>Make sure you know credentials</li>
+                <li>Enable network proxy</li>
+                <li>hotel start</li>
+                <li>hotel run 'npm start'</li>
+                <li>
+                  Reset application by going to
+                  https://onesie-life.localhost/reset
+                </li>
+              </ul>
+            </LargeNotes>
+          </Slide>
           <Slide bgImage={images.matrixWallpaper} bgDarken={0.5}>
             <Image src={images.icons.webSecurity} height={200} />
             <Heading size={3}>XSS, CSRF, CSP, JWT, WTF? IDK</Heading>
@@ -191,8 +214,10 @@ export default class Presentation extends React.Component {
               <Link href="https://twitter.com/dkundel">@dkundel</Link>
             </Heading>
             <LargeNotes>
-              Over the next 25 minutes I would like to take you through an
-              introduction to web security.
+              Over the next 30 minutes I would like to take you through an
+              introduction to web security. And while this talk won't make you a
+              web security expert, it will cover things that in my opinion every
+              web developer should know and be aware off.
             </LargeNotes>
           </Slide>
           <Slide>
@@ -247,27 +272,6 @@ export default class Presentation extends React.Component {
               But first let me introduce myself. I'm Dominik.You can reach me
               pretty much everywhere on the internet under @dkundel. I live in
               Berlin and I work as a developer evangelist at Twilio.
-            </LargeNotes>
-          </Slide>
-          <Slide>
-            <Image
-              src={images.twilio}
-              height="5rem"
-              style={{ marginBottom: '3rem' }}
-            />
-            <Heading size={4} fit>
-              Add messaging, voice, video and authentication in your apps with
-              the language you already use
-            </Heading>
-            <CodePane
-              lang="javascript"
-              source={require('!!raw-loader!./snippets/twilio.js')}
-            />
-            <LargeNotes>
-              In case you don't know Twilio. Twilio is a cloud communication
-              platform that allows you as developers to easily integrate
-              different means of communication such as voice, video or messaging
-              into your applications using the languages you already know.
             </LargeNotes>
           </Slide>
           <Slide bgColor="black">
@@ -365,13 +369,13 @@ export default class Presentation extends React.Component {
               <LinkedImage
                 src={images.onesieScreenshot}
                 width="80%"
-                href="https://onesie.life"
+                href="https://onesie-life.localhost"
                 rel="noopener noreferrer"
                 target="_blank"
               />
             </div>
             <Link
-              href="https://onesie.life"
+              href="https://onesie-life.localhost"
               rel="noopener noreferrer"
               target="_blank"
             >
@@ -412,7 +416,7 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={2}>Let's post something!</Heading>
             <ResourceLinkWithIcon
-              url="onesie.life/home"
+              url="onesie-life.localhost/home"
               icon={images.icons.desktopCode}
               text="onesie.life Feed"
             />
@@ -620,7 +624,7 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={2}>Blocking XSS Is Not Trivial</Heading>
             <ResourceLinkWithIcon
-              url="onesie.life/home"
+              url="onesie-life.localhost/home"
               icon={images.icons.desktopCode}
               text="onesie.life"
             />
@@ -667,7 +671,7 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={2}>XSS + poor JSONP = 💖</Heading>
             <ResourceLinkWithIcon
-              url="onesie.life"
+              url="onesie-life.localhost"
               icon={images.icons.desktopCode}
             />
             <LargeNotes>
@@ -691,7 +695,7 @@ export default class Presentation extends React.Component {
           <Slide>
             <Heading size={2}>CSP Demo</Heading>
             <ResourceLinkWithIcon
-              url="onesie.life/secure/home"
+              url="onesie-life.localhost/secure/home"
               icon={images.icons.desktopCode}
             />
             <LargeNotes>
@@ -760,7 +764,7 @@ export default class Presentation extends React.Component {
           </Slide>
           <Slide>
             <Heading size={2}>
-              Use signed <Mono>HttpOnly</Mono>
+              Use signed <Mono>HttpOnly</Mono> cookies
             </Heading>
           </Slide>
           <Slide>
