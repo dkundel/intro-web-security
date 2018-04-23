@@ -41,15 +41,15 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import 'prismjs/components/prism-http';
 
-const HASHTAGS = '#jsconfis';
-const SLIDE_URL = 'd-k.im/sec-jsconfis';
+const HASHTAGS = '#jsunconf #websec #onesiejs';
+const SLIDE_URL = 'd-k.im/sec-jsunconf';
 
 const theme = createTheme();
 
 const LargeNotes = ({ children }) => {
   return (
     <Notes>
-      <p style={{ fontSize: '20px' }}>{children}</p>
+      <p style={{ fontSize: '3em' }}>{children}</p>
     </Notes>
   );
 };
@@ -163,6 +163,10 @@ const images = {
     github: require('./assets/icons/github-icon.svg'),
     twitter: require('./assets/icons/twitter.svg'),
     slideDownload: require('./assets/icons/np_download-presentation_719406_FFFFFF.svg')
+  },
+  stickers: {
+    unicorn: require('./assets/unicorn-sticker.png'),
+    nerdishByNature: require('./assets/nerdish-by-nature-sticker.png')
   }
 };
 
@@ -241,16 +245,16 @@ export default class Presentation extends React.Component {
             </LargeNotes>
           </Slide>
           <Slide>
-            <Layout style={{alignItems: 'center'}}>
-            <Fill>
+            <Layout style={{ alignItems: 'center' }}>
+              <Fill>
                 <Heading size={2}>⁇ XSS ⁇</Heading>
                 <Heading size={2}>⁇ CSRF ⁇</Heading>
                 <Heading size={2}>⁇ CSP ⁇</Heading>
                 <Heading size={2}>⁇ JWT ⁇</Heading>
-            </Fill>
-            <Fill>
-              <Image src={images.confusedStarWars} width="40vw"/>
-            </Fill>
+              </Fill>
+              <Fill>
+                <Image src={images.confusedStarWars} width="40vw" />
+              </Fill>
             </Layout>
           </Slide>
           <Slide>
@@ -260,7 +264,7 @@ export default class Presentation extends React.Component {
               </Fit>
               <Fill style={{ marginLeft: '5rem', textAlign: 'center' }}>
                 <Text textSize="4rem">
-                  <S type="italic">Hi!</S>
+                  <S type="italic">Moin Moin!</S>
                 </Text>
                 <Text textSize="2rem">
                   <S type="italic">I'm Dominik Kundel!</S>
@@ -695,6 +699,9 @@ export default class Presentation extends React.Component {
                 </Code>
               </ListItem>
               <ListItem>
+                Check out libraries like <Code>helmet</Code> for essential HTTP headers.
+              </ListItem>
+              <ListItem>
                 Don't show versions of front-end libs or server
               </ListItem>
               <ListItem>
@@ -714,7 +721,7 @@ export default class Presentation extends React.Component {
                 Stay up to date with versions (Greenkeeper)
               </ListItem>
               <ListItem>
-                Use tools to detect security vulnerabilites (Snyk)
+                Use tools to detect security vulnerabilites (NSP, Snyk)
               </ListItem>
             </List>
             <LargeNotes>
@@ -767,7 +774,9 @@ export default class Presentation extends React.Component {
             </Heading>
           </Slide>
           <Slide>
-            <Heading size={2}>Stay <strong>up-to-date</strong></Heading>
+            <Heading size={2}>
+              Stay <strong>up-to-date</strong>
+            </Heading>
           </Slide>
           <Slide>
             <ResourceLinkWithIcon url={SLIDE_URL} icon={images.icons.slideDownload} />
@@ -788,6 +797,17 @@ export default class Presentation extends React.Component {
             </LargeNotes>
           </Slide>
           <Slide>
+            <div>
+              <Image src={images.stickers.nerdishByNature} height = "30vh"/>
+            </div>
+            <div>
+              <Image src={images.stickers.unicorn} height="30vh" />
+            </div>
+            <LargeNotes>
+              I got stickers!
+            </LargeNotes>
+          </Slide>
+          <Slide>
             <Layout>
               <Fit style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                 <Image src={images.meHeart} />
@@ -797,7 +817,7 @@ export default class Presentation extends React.Component {
               </Fit>
               <Fill style={{ marginLeft: '5rem', textAlign: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <Text textSize="4rem">
-                  <S type="italic">Thank You!</S>
+                  <S type="italic">Danke!</S>
                 </Text>
                 <Image src={images.twilio} height="180px" />
                 <div style={{ marginTop: '50px' }}>
