@@ -10,7 +10,8 @@
     "spectacle-code-slide": "^0.5.1",
     "spectacle-scripts": "2.0.0",
     "spectacle-terminal": "^0.3.0",
-    "spectacle-theme-anker": "^1.0.0-alpha.1"
+    "spectacle-theme-anker": "^1.0.0-alpha.1",
+    "snyk": "^1.83.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,10 +19,13 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "export": "node scripts/export-pdf.js",
-    "deploy": "git subtree push --prefix export origin gh-pages"
+    "deploy": "git subtree push --prefix export origin gh-pages",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "devDependencies": {
     "mkdirp": "^0.5.1",
     "puppeteer": "^0.12.0"
-  }
+  },
+  "snyk": true
 }
