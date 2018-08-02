@@ -6,7 +6,7 @@
     "prismjs": "^1.8.3",
     "raw-loader": "^0.5.1",
     "react": "15",
-    "react-dom": "15",
+    "react-dom": "16.0.1",
     "spectacle-code-slide": "^0.5.1",
     "spectacle-scripts": "2.0.0",
     "spectacle-terminal": "^0.3.0",
