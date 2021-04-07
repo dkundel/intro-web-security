@@ -8,7 +8,7 @@
     "react": "15",
     "react-dom": "15",
     "spectacle-code-slide": "^0.5.1",
-    "spectacle-scripts": "2.0.0",
+    "spectacle-scripts": "2.0.1",
     "spectacle-terminal": "^0.3.0",
     "spectacle-theme-anker": "^1.0.0-alpha.1"
   },
